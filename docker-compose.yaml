@@ -1,0 +1,28 @@
+services:
+  # Apache with PHP
+  app:
+    build:
+      context: .
+      dockerfile: ./php/Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - APACHE_ENABLE_REWRITE=true
+    volumes:
+      - ./app:/var/www/html
+
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: multidb
+    restart: unless-stopped
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
