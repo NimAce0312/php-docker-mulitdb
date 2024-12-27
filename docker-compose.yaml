@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: ./php/Dockerfile
+    image: php:8.2.27-apache-acetopia
     ports:
       - "80:80"
       - "443:443"
@@ -14,7 +15,7 @@ services:
 
   # MySQL Database
   db:
-    image: mysql:8.0
+    image: mysql:9.1.0
     ports:
       - "3306:3306"
     environment:

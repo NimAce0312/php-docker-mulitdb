@@ -1,4 +1,4 @@
-FROM php:8.1.1-apache
+FROM php:8.2.27-apache
 
 COPY ./apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
